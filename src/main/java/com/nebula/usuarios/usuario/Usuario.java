@@ -46,6 +46,10 @@ public class Usuario {
         return correo;
     }
 
+    public String getClaveHash() {
+        return claveHash;
+    }
+
     public Instant getCreadoEn() {
         return creadoEn;
     }

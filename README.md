@@ -35,6 +35,20 @@ Content-Type: application/json
 }
 ```
 
+## Endpoint de login
+
+```http
+POST /api/auth/login
+Content-Type: application/json
+```
+
+```json
+{
+  "correo": "admin@example.com",
+  "clave": "admin123"
+}
+```
+
 Para detener la API:
 
 ```bash

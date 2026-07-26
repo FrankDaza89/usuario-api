@@ -1,5 +1,6 @@
 package com.nebula.usuarios.comun;
 
+import com.nebula.usuarios.auth.CredencialesInvalidasException;
 import com.nebula.usuarios.usuario.CorreoDuplicadoException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,13 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class ApiExceptionHandler {
+
+    @ExceptionHandler(CredencialesInvalidasException.class)
+    ResponseEntity<ApiError> manejarCredencialesInvalidas(
+            CredencialesInvalidasException exception
+    ) {
+        return respuesta(HttpStatus.UNAUTHORIZED, exception.getMessage(), Map.of());
+    }
 
     @ExceptionHandler({CorreoDuplicadoException.class, DuplicateKeyException.class})
     ResponseEntity<ApiError> manejarCorreoDuplicado(RuntimeException exception) {
